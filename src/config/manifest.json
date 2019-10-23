@@ -1,0 +1,28 @@
+{
+  "name": "Xiaojing0Sentry",
+  "version": "$VERSION",
+  "description": "Chrome Extension of sentry for xiaojing0",
+  "homepage_url": "https://github.com/XyyF/xiaojing0-sentry",
+  "author": "Rengar",
+  "manifest_version": 2,
+  "minimum_chrome_version": "60",
+  "icons": {
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["http://dev.xiaojing0.com/*", "storage"],
+  "optional_permissions": ["<all_urls>"],
+  "web_accessible_resources": ["*.woff2", "*.png", "*.gif"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "matches": ["http://dev.xiaojing0.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

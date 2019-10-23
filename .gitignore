@@ -1,0 +1,32 @@
+.DS_Store
+node_modules
+/dist
+/tmp
+__external-libraries
+backup
+
+# local env files
+.env.local
+.env.*.local
+GitCommitMessage.template
+package-lock.json
+.deploy.config.js
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+git-helper
+
+# dll
+public/vendor/**/*
+build/vendor-manifest.json
