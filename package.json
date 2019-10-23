@@ -51,6 +51,6 @@
     "stream-series": "*",
     "underscore": "~1.7.0",
     "request": "^2.88.0",
-    "underscore.string": "~2.4.0"
+    "underscore.string": "~3.3.5"
   }
 }
