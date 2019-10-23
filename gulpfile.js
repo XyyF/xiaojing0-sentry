@@ -83,7 +83,6 @@ function buildJs(prefix = '.', ctx = {}) {
 
     return pipe(
         src,
-        $.babel(),
         $.preprocess({context: ctx}),
         $.concat('content.js'),
         './dist'

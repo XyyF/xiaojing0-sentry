@@ -3,7 +3,9 @@ class Drawer {
 
     init() {
         console.log(123, 'rengar')
+        window.abc = 1231
+        console.log(123, 'rengar', window.abc)
     }
 }
 
-export default new Drawer()
+window.drawer = new Drawer()
