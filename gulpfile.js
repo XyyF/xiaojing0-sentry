@@ -35,11 +35,10 @@ gulp.task('wex:js:ext', [], () => buildJs());
 
 gulp.task('wex:js', ['wex:js:ext'], () => {
     const src = [
-        './temp/content.js',
+        './dist/content.js',
     ];
     return pipe(
         src,
-        $.wrap('(function(){\n<%= contents %>\n})();'),
         $.concat('content.js'),
         gutil.env.production && uglify(),
         './dist'
@@ -77,11 +76,14 @@ function pipe(src, ...transforms) {
 
 function buildJs(prefix = '.', ctx = {}) {
     const src = [
-        `${prefix}/src/content.js`
+        `${prefix}/src/utils/**.js`,
+        `${prefix}/src/const/**.js`,
+        `${prefix}/src/**.js`,
     ];
 
     return pipe(
         src,
+        $.babel(),
         $.preprocess({context: ctx}),
         $.concat('content.js'),
         './dist'
