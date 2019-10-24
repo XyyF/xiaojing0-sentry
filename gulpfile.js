@@ -13,13 +13,14 @@ gulp.task('clean', () => {
 });
 
 gulp.task('build', (cb) => {
-    $.runSequence('clean', 'css', 'wex', 'chrome', cb);
+    $.runSequence('clean', 'css', 'content', 'background', 'chrome', cb);
 });
 
 gulp.task('default', ['build'], () => {
-    gulp.watch(['./src/**/*', './package.json'], ['default']);
+    gulp.watch(['./libs/**/*', './src/**/*', './package.json'], ['default']);
 });
 
+// build css
 gulp.task('css', () => {
     return pipe(
         './src/styles/basic.scss',
@@ -30,22 +31,39 @@ gulp.task('css', () => {
     );
 });
 
-// WebExtensions
-gulp.task('wex:js:ext', [], () => buildJs());
-
-gulp.task('wex:js', ['wex:js:ext'], () => {
+// build content.js
+gulp.task('content', ['content:js']);
+gulp.task('content:js:ext', [], () => buildJs());
+gulp.task('content:js', ['content:js:ext'], () => {
     const src = [
+        './libs/jquery.js',
         './dist/content.js',
     ];
     return pipe(
         src,
+        $.wrap('(function(){\n<%= contents %>\n})();'),
         $.concat('content.js'),
         gutil.env.production && uglify(),
         './dist'
     );
 });
 
-gulp.task('wex', ['wex:js']);
+// build background
+gulp.task('background:js:ext', [], () => buildBackgroundJs());
+gulp.task('background:js', ['background:js:ext'], () => {
+    const src = [
+        './libs/axios.js',
+        './dist/background.js',
+    ];
+    return pipe(
+        src,
+        $.wrap('(function(){\n<%= contents %>\n})();'),
+        $.concat('background.js'),
+        gutil.env.production && uglify(),
+        './dist'
+    );
+});
+gulp.task('background', ['background:js']);
 
 // Chrome
 gulp.task('chrome:css:libs', () => buildCssLibs('.', 'chrome-extension://__MSG_@@extension_id__/'));
@@ -85,6 +103,20 @@ function buildJs(prefix = '.', ctx = {}) {
         src,
         $.preprocess({context: ctx}),
         $.concat('content.js'),
+        './dist'
+    );
+}
+
+function buildBackgroundJs(prefix = '.', ctx = {}) {
+    const src = [
+        `${prefix}/src/const/**.js`,
+        `${prefix}/src/config/background.js`,
+    ];
+
+    return pipe(
+        src,
+        $.preprocess({context: ctx}),
+        $.concat('background.js'),
         './dist'
     );
 }
@@ -135,12 +167,6 @@ function prepareWexFolder(browser) {
             $.replace('$VERSION', getVersion()),
             `./dist`
         ),
-        pipe(
-            './src/config/background.js',
-            $.preprocess({context: {browser}}),
-            gutil.env.production && uglify(),
-            `./dist`
-        )
     );
 }
 

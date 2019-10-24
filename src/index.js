@@ -1,4 +1,3 @@
-window.onload = () => {
+$(document).ready(() => {
     window.drawer.init()
-}
-
+})

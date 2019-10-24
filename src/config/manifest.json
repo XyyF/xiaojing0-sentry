@@ -11,7 +11,12 @@
     "64": "icons/icon64.png",
     "128": "icons/icon128.png"
   },
-  "permissions": ["http://dev.xiaojing0.com/*", "storage"],
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://sentry.io/*",
+    "http://sentry.io/*"
+  ],
   "optional_permissions": ["<all_urls>"],
   "web_accessible_resources": ["*.woff2", "*.png", "*.gif"],
   "background": {
