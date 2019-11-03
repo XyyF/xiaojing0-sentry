@@ -1,6 +1,6 @@
 {
   "name": "Xiaojing0Sentry",
-  "version": "$VERSION",
+  "version": "1.0.0",
   "description": "Chrome Extension of sentry for xiaojing0",
   "homepage_url": "https://github.com/XyyF/xiaojing0-sentry",
   "author": "Rengar",
@@ -27,7 +27,7 @@
     {
       "run_at": "document_start",
       "matches": ["http://dev.xiaojing0.com/*"],
-      "js": ["content.js"]
+      "js": ["app.js", "chunk-vendors.js"]
     }
   ]
 }
