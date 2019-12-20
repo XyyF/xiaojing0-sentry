@@ -7,12 +7,13 @@ const config = {
     publicPath: '/',
     runtimeCompiler: true,
     productionSourceMap: false,
-    lintOnSave: true,
+    lintOnSave: false,
     pages: {
         app: {
             entryName: 'sentry',
             // page 的入口
             entry: 'src/index.js',
+            filename: 'index.html',
         },
     },
     chainWebpack: config => {
