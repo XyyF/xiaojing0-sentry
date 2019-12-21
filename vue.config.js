@@ -16,6 +16,15 @@ const config = {
             filename: 'index.html',
         },
     },
+    css: {
+        // 默认开发模式为true, 生产模式为false
+        // extract: true,
+        loaderOptions: {
+            sass: {
+                prependData: '@import "~@/styles/basic.scss";',
+            },
+        },
+    },
     chainWebpack: config => {
         // __external下的依赖默认使用主工程的
         config.resolve.modules.prepend(path.join(__dirname, './node_modules'))

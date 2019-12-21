@@ -1,9 +1,13 @@
 <template>
     <div class="login-root">
         <!-- Block-Element--Modifier-->
-        login
+        <header>
+            <img src="../../static/icons/icon128.png" />
+        </header>
 
-        <img src="../../static/icons/icon128.png" />
+        <div class="login__body">
+            <h2>Sign in</h2>
+        </div>
     </div>
 </template>
 
@@ -59,5 +63,32 @@
 <style lang="scss" rel='stylesheet/scss' scoped>
     .login-root {
         width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    header {
+        width: 128px;
+        height: 128px;
+        background-color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        margin-top: 10vh;
+        border: 1px solid $basic-border-primary;
+    }
+
+    header img {
+        width: 88px;
+        height: 88px;
+        margin-top: 10px;
+    }
+
+    .login__body {
+        margin-top: 20px;
+        width: 148px;
+        height: 148px;
+        background-color: #fff;
+        color: #000;
     }
 </style>

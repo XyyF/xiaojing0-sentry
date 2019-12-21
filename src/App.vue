@@ -16,7 +16,7 @@
     }
 </script>
 
-<style>
+<style lang="scss" rel="stylesheet/scss">
     #sentry {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -26,8 +26,8 @@
         left: 0;
         bottom: 0;
         width: 232px;
-        background-color: rgb(35, 41, 45) !important;
+        background-color: #fff !important;
         z-index: 2;
-        color: white;
+        border-right: 1px solid $basic-border-primary;
     }
 </style>
