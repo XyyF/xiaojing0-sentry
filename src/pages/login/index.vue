@@ -2,6 +2,8 @@
     <div class="login-root">
         <!-- Block-Element--Modifier-->
         login
+
+        <img src="../../static/icons/icon128.png" />
     </div>
 </template>
 
@@ -55,4 +57,7 @@
 </script>
 
 <style lang="scss" rel='stylesheet/scss' scoped>
+    .login-root {
+        width: 100%;
+    }
 </style>

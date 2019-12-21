@@ -17,12 +17,17 @@
 </script>
 
 <style>
-    #app {
+    #sentry {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 232px;
+        background-color: rgb(35, 41, 45) !important;
+        z-index: 2;
+        color: white;
     }
 </style>
