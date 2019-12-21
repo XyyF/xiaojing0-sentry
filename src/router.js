@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Login = () => import('./pages/login/index'/* webpackChunkName: "sentry_login" */)
-const Bugs = () => import('./pages/bugs/index'/* webpackChunkName: "sentry_bugs" */)
+import Login from './pages/login/index'
+import Bugs from './pages/bugs/index'
 
 Vue.use(Router);
 

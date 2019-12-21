@@ -8,14 +8,17 @@
         <div class="login__body">
             <h2>Sign in</h2>
 
-            <h4>organization</h4>
-            <v-input
-                :messages="['Messages']"
-                append-icon="close"
-                prepend-icon="phone">
-                Default Slot
-            </v-input>
-            <h4>key</h4>
+            <!--<h4>organization</h4>-->
+            <!--<v-text-field v-model="organization"></v-text-field>-->
+            <h4>token</h4>
+            <v-text-field v-model="token"></v-text-field>
+            <v-btn
+                block
+                outlined
+                color="indigo"
+                @click="handleSignIn">
+                Sign In
+            </v-btn>
         </div>
     </div>
 </template>
@@ -28,7 +31,10 @@
         mixins: [],
         data() {
             /* Notice: 给data里面的变量留下说明文字 */
-            return {}
+            return {
+                organization: '',
+                token: '',
+            }
         },
         props: {
             /* Notice: 写下props数据的描述、用途 */
@@ -40,31 +46,17 @@
         filters: {},
         methods: {
             /* Notice: 复杂的方法，写下说明 */
-        },
-        watch: {
-            /* Notice: 写下说明 */
-        },
-        beforeCreate() {
-        },
-        created() {
-        },
-        beforeMount() {
-        },
-        mounted() {
-        },
-        beforeUpdate() {
-        },
-        updated() {
-        },
-        activated() {
-        },
-        deactivated() {
-        },
-        beforeDestroy() {
-        },
-        destroyed() {
-        },
-        errorCaptured() {
+            // 登录
+            handleSignIn() {
+                chrome.runtime.sendMessage({
+                    type: 1,
+                    opts: {
+                        token: this.token,
+                    },
+                }, function(response) {
+                    console.log('收到来自后台的回复：' + response);
+                })
+            },
         },
     }
 </script>
@@ -96,8 +88,16 @@
     .login__body {
         margin-top: 20px;
         width: 148px;
-        height: 148px;
         background-color: #fff;
         color: #000;
+    }
+
+    h4 {
+        margin: 4px 0 0 0;
+    }
+
+    .v-input {
+        margin: 0;
+        padding: 0;
     }
 </style>
