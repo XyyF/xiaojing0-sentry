@@ -7,6 +7,15 @@
 
         <div class="login__body">
             <h2>Sign in</h2>
+
+            <h4>organization</h4>
+            <v-input
+                :messages="['Messages']"
+                append-icon="close"
+                prepend-icon="phone">
+                Default Slot
+            </v-input>
+            <h4>key</h4>
         </div>
     </div>
 </template>

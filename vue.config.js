@@ -21,8 +21,11 @@ const config = {
         // extract: true,
         loaderOptions: {
             sass: {
-                prependData: '@import "~@/styles/basic.scss";',
+                prependData: '@import "~@/styles/basic.sass"',
             },
+            scss: {
+                prependData: '@import "~@/styles/basic.scss";',
+            }
         },
     },
     chainWebpack: config => {
